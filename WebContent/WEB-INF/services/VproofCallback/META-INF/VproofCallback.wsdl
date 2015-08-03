@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.vikisolutions.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.vikisolutions.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.vikisolutions.com/">
+      <s:element name="AnnotationUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="externalApplicationSessionId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="proofFile" type="tns:ProofFile"/>
+            <s:element maxOccurs="1" minOccurs="1" name="operation" type="tns:AnnotationOperation"/>
+            <s:element maxOccurs="1" minOccurs="0" name="annotation" type="tns:Annotation"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProofFile">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ExtensionData" type="tns:ExtensionDataObject"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CopyReferenceMarks" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="DataStoreName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="DocumentTitle" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="DocumentType" type="tns:EnumerationsDocumentType"/>
+          <s:element maxOccurs="1" minOccurs="1" name="DocumentType2" nillable="true" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ExternalId" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="InitialFileIndex" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PathFilename" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Position" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Revision" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExtensionDataObject"/>
+      <s:simpleType name="EnumerationsDocumentType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Proof"/>
+          <s:enumeration value="Reference"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AnnotationOperation">
+        <s:restriction base="s:string">
+          <s:enumeration value="Created"/>
+          <s:enumeration value="Update"/>
+          <s:enumeration value="Deleted"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Annotation">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ExtensionData" type="tns:ExtensionDataObject"/>
+          <s:element maxOccurs="1" minOccurs="0" name="AdditionalMarks" type="tns:ArrayOfAnnotationMark"/>
+          <s:element maxOccurs="1" minOccurs="0" name="AnnotationId" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="AnnotationNumber" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="AnnotationPageMaps" type="tns:ArrayOfAnnotationPageMap"/>
+          <s:element maxOccurs="1" minOccurs="0" name="AnnotationReplies" type="tns:ArrayOfAnnotationReply"/>
+          <s:element maxOccurs="1" minOccurs="1" name="AnnotationType" nillable="true" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CreatedTimestamp" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Status" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Task" type="tns:Task"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Text" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Type" type="tns:dcEnumerationsAnnotationType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserAnnotationColor" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserFullName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserUniqueIdentifier" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnnotationMark">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="AnnotationMark" nillable="true" type="tns:AnnotationMark"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AnnotationMark">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ExtensionData" type="tns:ExtensionDataObject"/>
+          <s:element maxOccurs="1" minOccurs="0" name="AnnotationPageMaps" type="tns:ArrayOfAnnotationPageMap"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserAnnotationColor" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserInformation" type="tns:UserInformation"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnnotationPageMap">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="AnnotationPageMap" nillable="true" type="tns:AnnotationPageMap"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AnnotationPageMap">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ExtensionData" type="tns:ExtensionDataObject"/>
+          <s:element maxOccurs="1" minOccurs="1" name="AnnotationType" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Duration" type="s:double"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Height" type="s:double"/>
+          <s:element maxOccurs="1" minOccurs="1" name="MarkIndex" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="PageNumber" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="PointIndex" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="StartTime" type="s:double"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Type" type="tns:dcEnumerationsAnnotationType"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Width" type="s:double"/>
+          <s:element maxOccurs="1" minOccurs="1" name="X" type="s:double"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Y" type="s:double"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="dcEnumerationsAnnotationType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Rectangle"/>
+          <s:enumeration value="Circle"/>
+          <s:enumeration value="FreeForm"/>
+          <s:enumeration value="PreflightError"/>
+          <s:enumeration value="PreflightWarning"/>
+          <s:enumeration value="PreflightInfo"/>
+          <s:enumeration value="Ruler"/>
+          <s:enumeration value="InkDensity"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="UserInformation">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ExtensionData" type="tns:ExtensionDataObject"/>
+          <s:element maxOccurs="1" minOccurs="0" name="AnnotationColor" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="CustomerName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="DateTimeFormat" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="FirstName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LastName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="TimeZone" type="tns:UserTimeZone"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserUniqueIdentifier" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserTimeZone">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ExtensionData" type="tns:ExtensionDataObject"/>
+          <s:element maxOccurs="1" minOccurs="1" name="OffsetHours" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="OffsetMinutes" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="TimeZoneStandardName" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnnotationReply">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="AnnotationReply" nillable="true" type="tns:AnnotationReply"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AnnotationReply">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ExtensionData" type="tns:ExtensionDataObject"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CreatedTimestamp" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ReplyNumber" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Task" type="tns:Task"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Text" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserAnnotationColor" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserFullName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserUniqueIdentifier" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Task">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ExtensionData" type="tns:ExtensionDataObject"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ExternalId" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="RequiresColorApproval" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="TaskId" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AnnotationUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="AnnotationUpdateResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateUserApproval">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="externalApplicationSessionId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="proofFile" type="tns:ProofFile"/>
+            <s:element maxOccurs="1" minOccurs="0" name="approvalState" type="tns:ApprovalState"/>
+            <s:element maxOccurs="1" minOccurs="1" name="authorizeApproval" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApprovalState">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Value" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ExternalValue" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Comment" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="SelectedReasons" type="tns:ArrayOfApprovalReason"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ReasonComment" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Task" type="tns:Task"/>
+          <s:element maxOccurs="1" minOccurs="1" name="IsColorApproval" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Timestamp" nillable="true" type="tns:DateTimeOffset"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfApprovalReason">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="ApprovalReason" nillable="true" type="tns:ApprovalReason"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApprovalReason">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ExtensionData" type="tns:ExtensionDataObject"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Value" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DateTimeOffset">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="DateTime" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="OffsetMinutes" type="s:short"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidateUserApprovalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ValidateUserApprovalResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="validationFailureUserMessage" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserApprovalUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="externalApplicationSessionId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="proofFile" type="tns:ProofFile"/>
+            <s:element maxOccurs="1" minOccurs="0" name="approvalState" type="tns:ApprovalState"/>
+            <s:element maxOccurs="1" minOccurs="0" name="userUniqueIdentifier" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="userFullName" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserApprovalUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="UserApprovalUpdateResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProofSessionClosed">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="proofSessionId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="externalApplicationSessionId" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProofSessionClosedResponse">
+        <s:complexType/>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ProofSessionClosedSoapOut">
+    <wsdl:part name="parameters" element="tns:ProofSessionClosedResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UserApprovalUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:UserApprovalUpdateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AnnotationUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:AnnotationUpdate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProofSessionClosedSoapIn">
+    <wsdl:part name="parameters" element="tns:ProofSessionClosed">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UserApprovalUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:UserApprovalUpdate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidateUserApprovalSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateUserApprovalResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidateUserApprovalSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateUserApproval">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AnnotationUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:AnnotationUpdateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="VproofCallbackSoap">
+    <wsdl:operation name="AnnotationUpdate">
+      <wsdl:input message="tns:AnnotationUpdateSoapIn">
+    </wsdl:input>
+      <wsdl:output message="tns:AnnotationUpdateSoapOut">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserApproval">
+      <wsdl:input message="tns:ValidateUserApprovalSoapIn">
+    </wsdl:input>
+      <wsdl:output message="tns:ValidateUserApprovalSoapOut">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserApprovalUpdate">
+      <wsdl:input message="tns:UserApprovalUpdateSoapIn">
+    </wsdl:input>
+      <wsdl:output message="tns:UserApprovalUpdateSoapOut">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProofSessionClosed">
+      <wsdl:input message="tns:ProofSessionClosedSoapIn">
+    </wsdl:input>
+      <wsdl:output message="tns:ProofSessionClosedSoapOut">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VproofCallbackSoap" type="tns:VproofCallbackSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AnnotationUpdate">
+      <soap:operation soapAction="http://www.vikisolutions.com/AnnotationUpdate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserApproval">
+      <soap:operation soapAction="http://www.vikisolutions.com/ValidateUserApproval" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserApprovalUpdate">
+      <soap:operation soapAction="http://www.vikisolutions.com/UserApprovalUpdate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProofSessionClosed">
+      <soap:operation soapAction="http://www.vikisolutions.com/ProofSessionClosed" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VproofCallbackSoap12" type="tns:VproofCallbackSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AnnotationUpdate">
+      <soap12:operation soapAction="http://www.vikisolutions.com/AnnotationUpdate" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserApproval">
+      <soap12:operation soapAction="http://www.vikisolutions.com/ValidateUserApproval" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserApprovalUpdate">
+      <soap12:operation soapAction="http://www.vikisolutions.com/UserApprovalUpdate" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProofSessionClosed">
+      <soap12:operation soapAction="http://www.vikisolutions.com/ProofSessionClosed" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VproofCallback">
+    <wsdl:port name="VproofCallbackSoap" binding="tns:VproofCallbackSoap">
+      <soap:address location="http://localhost/VikiTest/Callbacks/VproofCallback.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="VproofCallbackSoap12" binding="tns:VproofCallbackSoap12">
+      <soap12:address location="http://localhost/VikiTest/Callbacks/VproofCallback.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

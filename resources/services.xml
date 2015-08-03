@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) --><serviceGroup>
+    <service name="VproofCallback">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.vikisolutions.www.VproofCallbackMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.vikisolutions.www.VproofCallbackSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="UserApprovalUpdate" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.vikisolutions.com/">
+            <actionMapping>http://www.vikisolutions.com/UserApprovalUpdate</actionMapping>
+            <outputActionMapping>http://www.vikisolutions.com/VproofCallbackSoap/UserApprovalUpdateResponse</outputActionMapping>
+        </operation>
+        <operation name="ValidateUserApproval" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.vikisolutions.com/">
+            <actionMapping>http://www.vikisolutions.com/ValidateUserApproval</actionMapping>
+            <outputActionMapping>http://www.vikisolutions.com/VproofCallbackSoap/ValidateUserApprovalResponse</outputActionMapping>
+        </operation>
+        <operation name="ProofSessionClosed" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.vikisolutions.com/">
+            <actionMapping>http://www.vikisolutions.com/ProofSessionClosed</actionMapping>
+            <outputActionMapping>http://www.vikisolutions.com/VproofCallbackSoap/ProofSessionClosedResponse</outputActionMapping>
+        </operation>
+        <operation name="AnnotationUpdate" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.vikisolutions.com/">
+            <actionMapping>http://www.vikisolutions.com/AnnotationUpdate</actionMapping>
+            <outputActionMapping>http://www.vikisolutions.com/VproofCallbackSoap/AnnotationUpdateResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

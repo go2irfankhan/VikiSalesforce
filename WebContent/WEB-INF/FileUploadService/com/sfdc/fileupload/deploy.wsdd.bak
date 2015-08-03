@@ -1,0 +1,29 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from FileUploadService WSDL service -->
+
+  <service name="FileUpload" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://fileupload.sfdc.com"/>
+      <parameter name="wsdlServiceElement" value="FileUploadService"/>
+      <parameter name="schemaQualified" value="http://fileupload.sfdc.com"/>
+      <parameter name="wsdlServicePort" value="FileUpload"/>
+      <parameter name="className" value="com.sfdc.fileupload.FileUploadSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="FileUpload"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="uploadFile" qname="operNS:uploadFile" xmlns:operNS="http://fileupload.sfdc.com" returnQName="retNS:uploadFileReturn" xmlns:retNS="http://fileupload.sfdc.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:s" xmlns:pns="http://fileupload.sfdc.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="uploadFile"/>
+
+  </service>
+</deployment>
